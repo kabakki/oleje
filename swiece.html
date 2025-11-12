@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Świece Sojowe - Mała Olejarnia Eli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-primary': '#6B8E23',
+                        'green-secondary': '#556B2F',
+                        'green-light': '#F0F8E8',
+                        'green-dark': '#2F4F2F',
+                        'gold': '#DAA520',
+                        'gold-light': '#F4E4BC',
+                        'cream': '#FDF6E3',
+                        'nature-green': '#8FBC8F',
+                        'sage': '#9CAF88',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'body': ['Crimson Text', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item {
+            transition: all 0.3s ease;
+            position: relative;
+            color: #FDF6E3;
+        }
+        
+        .nav-item:hover {
+            color: #DAA520;
+            transform: translateY(-2px);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #DAA520, #F4E4BC);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nature-background {
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(143, 188, 143, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(156, 175, 136, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 60% 10%, rgba(107, 142, 35, 0.08) 0%, transparent 35%),
+                radial-gradient(circle at 30% 90%, rgba(218, 165, 32, 0.06) 0%, transparent 30%),
+                linear-gradient(135deg, #FDF6E3 0%, #F0F8E8 30%, #FDF6E3 60%, #F0F8E8 100%);
+            position: relative;
+        }
+        
+        .nature-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B8E23' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .green-header {
+            background: linear-gradient(to right, #2F4F2F, #556B2F, #2F4F2F);
+            box-shadow: 0 4px 12px rgba(107, 142, 35, 0.15);
+        }
+
+        .classical-shadow {
+            box-shadow: 
+                0 4px 8px rgba(107, 142, 35, 0.1),
+                0 8px 16px rgba(107, 142, 35, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(107, 142, 35, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(107, 142, 35, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 142, 35, 0.15);
+        }
+
+        .star-decoration {
+            position: absolute;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star-1 {
+            top: 10%;
+            left: 5%;
+            width: 20px;
+            height: 20px;
+            background: rgba(218, 165, 32, 0.3);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        
+        .star-2 {
+            top: 30%;
+            right: 8%;
+            width: 16px;
+            height: 16px;
+            background: rgba(107, 142, 35, 0.2);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        
+        .star-3 {
+            bottom: 20%;
+            left: 10%;
+            width: 18px;
+            height: 18px;
+            background: rgba(156, 175, 136, 0.25);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+    </style>
+</head>
+<body class="nature-background text-green-dark font-body min-h-screen">
+    <div class="h-2 bg-gold"></div>
+    
+    <header class="green-header classical-shadow sticky top-0 z-50 border-b-2 border-gold-light text-cream">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Mała Olejarnia Eli" class="h-24 w-auto">
+                    </a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-item font-semibold text-lg font-serif">O NAS</a>
+                    <a href="oleje.html" class="nav-item font-semibold text-lg font-serif">OLEJE</a>
+                    <a href="swiece.html" class="nav-item font-semibold text-lg font-serif text-gold">ŚWIECE SOJOWE</a>
+                    <a href="mydelka.html" class="nav-item font-semibold text-lg font-serif">NATURALNE MYDEŁKA</a>
+                </nav>
+                
+                <button class="md:hidden p-2 text-cream">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-gradient-to-r from-green-light via-cream to-green-light py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center items-center mb-6">
+                <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-gold"></div>
+                <h1 class="text-5xl font-bold mx-8 font-serif text-green-dark">ŚWIECE SOJOWE</h1>
+                <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-gold"></div>
+            </div>
+            <p class="text-xl text-green-secondary font-body max-w-3xl mx-auto leading-relaxed">
+                Nasze świece sojowe to połączenie naturalnych składników z pięknymi zapachami. 
+                Każda świeca jest ręcznie wykonana z najwyższej jakości wosku sojowego.
+            </p>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12 relative">
+        <div class="star-decoration star-1"></div>
+        <div class="star-decoration star-2"></div>
+        <div class="star-decoration star-3"></div>
+        
+        <div class="space-y-16">
+            <div class="product-card p-8 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_invictus-CqdlByIvLJTzNRtacdDoTts6A5LtCN.jpg" alt="Świeca Invictus" class="w-full h-80 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Invictus</h3>
+                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
+                        Energetyzujący zapach inspirowany świeżością morza i drzewem grejpfrutowym. 
+                        Idealny do porannej motywacji i tworzenia dynamicznej atmosfery. Czas palenia: około 40 godzin.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gold font-serif">45 zł</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card p-8 flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_pola%20lawendy-qGbYE4wm0hxCeGiABk6gqoExZ8cA5l.jpg" alt="Świeca Pola Lawendy" class="w-full h-80 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Pola Lawendy</h3>
+                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
+                        Relaksujący zapach prowansalskiej lawendy przeniesie Cię na spokojne pola kwiatowe. 
+                        Idealna do wieczornego odpoczynku i medytacji. Czas palenia: około 45 godzin.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gold font-serif">48 zł</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card p-8 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_miss%20cherry-WMrkNJs47aIAOCRa7B870e7yiGflZh.jpg" alt="Świeca Miss Cherry" class="w-full h-80 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Miss Cherry</h3>
+                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
+                        Słodki i soczysty zapach dojrzałych wiśni z nutą migdałów. 
+                        Wprowadzi do Twojego domu radosną i ciepłą atmosferę. Czas palenia: około 42 godziny.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gold font-serif">46 zł</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card p-8 flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_zielony%20wodospad-V9jcjKQlhQNg2UifYINjPhrVOr7Uay.jpg" alt="Świeca Zielony Wodospad" class="w-full h-80 object-cover rounded-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Zielony Wodospad</h3>
+                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
+                        Orzeźwiający zapach zielonej herbaty z nutami bambusa i mchu. 
+                        Przeniesie Cię w spokój tropikalnego lasu deszczowego. Czas palenia: około 38 godzin.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-gold font-serif">50 zł</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gradient-to-r from-green-dark via-green-secondary to-green-dark text-cream py-16 mt-20 relative">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold"></div>
+        
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center items-center mb-8">
+                    <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-gold"></div>
+                    <h3 class="text-3xl font-bold mx-6 font-serif">MAŁA OLEJARNIA ELI</h3>
+                    <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-gold"></div>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-xl leading-relaxed mb-6 font-body">
+                        Nasze świece sojowe są ręcznie wykonane z naturalnego wosku sojowego, który pali się dłużej i czystszej niż tradycyjne świece parafinowe. 
+                        Każda świeca to unikalne połączenie aromatu i atmosfery.
+                    </p>
+                </div>
+                
+                <div class="mt-12 bg-green-primary bg-opacity-20 rounded-xl p-8 max-w-2xl mx-auto">
+                    <h4 class="text-xl font-bold mb-6 font-serif text-gold">SKONTAKTUJ SIĘ Z NAMI</h4>
+                    <div class="flex flex-wrap justify-center gap-8 text-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                            </div>
+                            <span class="font-medium">kontakt@malaolejarniaeli.pl</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                            </div>
+                            <span class="font-medium">+48 123 456 789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

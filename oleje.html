@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oleje - Mała Olejarnia Eli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-primary': '#6B8E23',
+                        'green-secondary': '#556B2F',
+                        'green-light': '#F0F8E8',
+                        'green-dark': '#2F4F2F',
+                        'gold': '#DAA520',
+                        'gold-light': '#F4E4BC',
+                        'cream': '#FDF6E3',
+                        'nature-green': '#8FBC8F',
+                        'sage': '#9CAF88',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'body': ['Crimson Text', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item {
+            transition: all 0.3s ease;
+            position: relative;
+            color: #FDF6E3;
+        }
+        
+        .nav-item:hover {
+            color: #DAA520;
+            transform: translateY(-2px);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #DAA520, #F4E4BC);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        /* Replaced nature background with clean gradient like swiece.html */
+        .nature-background {
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(143, 188, 143, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 75%, rgba(156, 175, 136, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 60% 10%, rgba(107, 142, 35, 0.08) 0%, transparent 35%),
+                radial-gradient(circle at 30% 90%, rgba(218, 165, 32, 0.06) 0%, transparent 30%),
+                linear-gradient(135deg, #FDF6E3 0%, #F0F8E8 30%, #FDF6E3 60%, #F0F8E8 100%);
+            position: relative;
+        }
+        
+        .nature-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B8E23' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .green-header {
+            background: linear-gradient(to right, #2F4F2F, #556B2F, #2F4F2F);
+            box-shadow: 0 4px 12px rgba(107, 142, 35, 0.15);
+        }
+
+        .classical-shadow {
+            box-shadow: 
+                0 4px 8px rgba(107, 142, 35, 0.1),
+                0 8px 16px rgba(107, 142, 35, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .oil-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(107, 142, 35, 0.2);
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(107, 142, 35, 0.1),
+                0 20px 60px rgba(107, 142, 35, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .oil-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 142, 35, 0.15);
+        }
+
+        .oil-image {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .oil-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 60%, rgba(240, 248, 232, 0.2) 100%);
+        }
+    </style>
+</head>
+<body class="nature-background text-green-dark font-body min-h-screen">
+    <!-- Decorative top border -->
+    <div class="h-2 bg-gold"></div>
+    
+    <!-- Header -->
+    <header class="green-header classical-shadow sticky top-0 z-50 border-b-2 border-gold-light text-cream">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="img/logo.png" alt="Mała Olejarnia Eli" class="h-24 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-item font-semibold text-lg font-serif">O NAS</a>
+                    <a href="oleje.html" class="nav-item font-semibold text-lg font-serif text-gold">OLEJE</a>
+                    <a href="swiece.html" class="nav-item font-semibold text-lg font-serif">ŚWIECE SOJOWE</a>
+                    <a href="mydelka.html" class="nav-item font-semibold text-lg font-serif">NATURALNE MYDEŁKA</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button class="md:hidden p-2 text-cream">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Section -->
+    <div class="bg-gradient-to-r from-green-light via-cream to-green-light py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center items-center mb-6">
+                <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-gold"></div>
+                <h1 class="text-5xl font-bold mx-8 font-serif text-green-dark">NASZE OLEJE</h1>
+                <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-gold"></div>
+            </div>
+            <p class="text-xl text-green-secondary font-body max-w-3xl mx-auto leading-relaxed">
+                Odkryj bogactwo naturalnych olejów tłoczonych na zimno. Każdy z naszych produktów to efekt starannej selekcji najlepszych surowców i tradycyjnych metod produkcji.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16 relative">
+        <!-- Star decorations -->
+        <div class="star-decoration star-1"></div>
+        <div class="star-decoration star-2"></div>
+        <div class="star-decoration star-3"></div>
+        <div class="star-decoration star-4"></div>
+        
+        <!-- Oils Grid -->
+        <div class="space-y-16">
+            <!-- Updated Oil 1 - Olej słonecznikowy with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="oil-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20slonecznikowy-2zIwf99zsWJM84pbpCu89Tx8f2GOQ6.png" alt="Olej słonecznikowy" class="w-full h-96 object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej Słonecznikowy</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Olej słonecznikowy tłoczony na zimno to naturalny skarb pełen witaminy E i nienasyconych kwasów tłuszczowych. Zachowuje wszystkie cenne właściwości dzięki delikatnej metodzie tłoczenia bez użycia wysokich temperatur.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Idealny do codziennego użytku w kuchni - do sałatek, sosów i potraw na zimno. Charakteryzuje się delikatnym, słonecznikowym smakiem i złocistym kolorem. Wspiera zdrowie serca i układu krążenia.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">30 zł</span>
+                            <span class="text-sm text-green-secondary">500ml</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updated Oil 2 - Olej rzepakowy with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6 md:order-1">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej Rzepakowy</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Olej rzepakowy tłoczony na zimno to doskonałe źródło kwasów omega-3 i omega-6 w optymalnych proporcjach. Nierafinowany i niefiltrowany, zachowuje pełnię wartości odżywczych z nasion rzepaku.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Uniwersalny olej do codziennego gotowania i smażenia w niskich temperaturach. Charakteryzuje się łagodnym smakiem i złocistym kolorem. Wspiera prawidłowy poziom cholesterolu i zdrowie układu sercowo-naczyniowego.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">35 zł</span>
+                            <span class="text-sm text-green-secondary">500ml</span>
+                        </div>
+                    </div>
+                    <div class="oil-image md:order-2">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20rzepakowy-7DuiLO45mouCJFYfWRrEzjQMW6cgqb.png" alt="Olej rzepakowy" class="w-full h-96 object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updated Oil 3 - Olej z konopi with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="oil-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20z%20konopi-i5uHM3IxeOGE2MQ13WQnrOsx5vmkNr.png" alt="Olej konopny" class="w-full h-96 object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej z Konopi</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Olej konopny to nowoczesny superfood o wyjątkowych właściwościach. Tłoczony z nasion konopi siewnych, zawiera idealne proporcje kwasów omega-3 i omega-6. Charakteryzuje się zielonkawym odcieniem i orzechowym smakiem.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Wspiera regenerację skóry, wzmacnia odporność i poprawia samopoczucie. Doskonały do sałatek, kanapek i jako dodatek do smoothie. Produkt w 100% naturalny i ekologiczny.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">55 zł</span>
+                            <span class="text-sm text-green-secondary">250ml</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updated Oil 4 - Olej z ostropestu with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6 md:order-1">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej z Ostropestu</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Olej z ostropestu plamistego to naturalny eliksir dla wątroby. Tłoczony na zimno z nasion ostropestu, bogaty w sylimarynę i nienasycone kwasy tłuszczowe. Nierafinowany i niefiltrowany dla maksymalnej skuteczności.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Wspiera regenerację i ochronę wątroby, wspomaga detoksykację organizmu. Polecany jako suplement diety - łyżeczka dziennie na czczo. Charakteryzuje się delikatnym, lekko gorzkawo-orzechowym smakiem.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">50 zł</span>
+                            <span class="text-sm text-green-secondary">250ml</span>
+                        </div>
+                    </div>
+                    <div class="oil-image md:order-2">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20z%20ostropestu-auq5oQoqGjTwrAPdaAHDrZheZWRwF2.png" alt="Olej z ostropestu" class="w-full h-96 object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updated Oil 5 - Olej z czarnuszki with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="oil-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20z%20czarnuszki-bubFFf2mL9OlqobYza5Qaz82tn0v8b.png" alt="Olej z czarnuszki" class="w-full h-96 object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej z Czarnuszki</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Olej z czarnuszki to prawdziwy skarb natury. Tłoczony na zimno z nasion czarnuszki siewnej, zachowuje wszystkie cenne właściwości. Bogaty w nienasycone kwasy tłuszczowe, witaminy A, E oraz składniki mineralne.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Idealny do stosowania wewnętrznego i zewnętrznego. Wspiera odporność organizmu, poprawia kondycję skóry i włosów. Charakteryzuje się intensywnym, korzenny smakiem. Polecany jako naturalny suplement diety.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">45 zł</span>
+                            <span class="text-sm text-green-secondary">100ml</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updated Oil 6 - Olej z gorczycy with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6 md:order-1">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej z Gorczycy</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Olej z gorczycy to pikantny akcent w zdrowej kuchni. Tłoczony na zimno z nasion gorczycy, zachowuje naturalną ostrość i bogactwo składników odżywczych. Nierafinowany i niefiltrowany dla pełni smaku.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Doskonały do marynat, sosów i dressingu. Charakteryzuje się wyrazistym, lekko ostrym smakiem i złocistym kolorem. Wspiera trawienie i metabolizm. Idealny dla miłośników intensywnych smaków.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">40 zł</span>
+                            <span class="text-sm text-green-secondary">250ml</span>
+                        </div>
+                    </div>
+                    <div class="oil-image md:order-2">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20z%20gorczycy-BoldOv0wlcVLGWH3eYTZYpUmICCFZ0.png" alt="Olej z gorczycy" class="w-full h-96 object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Updated Oil 7 - Olej lniany with new image and details -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="oil-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/olej%20lniany-bA3fWQzQt4osCgBovZHDc7JCUo2Tyg.png" alt="Olej lniany" class="w-full h-96 object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Olej Lniany</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Nasz olej lniany to źródło cennych kwasów omega-3. Tłoczony na zimno z nasion lnu, zachowuje pełnię wartości odżywczych. Charakteryzuje się złocistym kolorem i delikatnym, orzechowym aromatem.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Doskonały dodatek do sałatek, smoothie i innych potraw na zimno. Wspiera pracę serca, mózgu i układu nerwowego. Polecany szczególnie osobom dbającym o zdrową dietę. Przechowywać w lodówce po otwarciu.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-gold font-serif">40 zł</span>
+                            <span class="text-sm text-green-secondary">250ml</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-green-dark via-green-secondary to-green-dark text-cream py-16 mt-20 relative">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold"></div>
+        
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center items-center mb-8">
+                    <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-gold"></div>
+                    <h3 class="text-3xl font-bold mx-6 font-serif">MAŁA OLEJARNIA ELI</h3>
+                    <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-gold"></div>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-xl leading-relaxed mb-6 font-body">
+                        Wszystkie nasze oleje są tłoczone na zimno, co gwarantuje zachowanie pełni wartości odżywczych i właściwości leczniczych. 
+                        Dbamy o najwyższą jakość surowców i tradycyjne metody produkcji.
+                    </p>
+                </div>
+                
+                <div class="mt-12 bg-green-primary bg-opacity-20 rounded-xl p-8 max-w-2xl mx-auto">
+                    <h4 class="text-xl font-bold mb-6 font-serif text-gold">SKONTAKTUJ SIĘ Z NAMI</h4>
+                    <div class="flex flex-wrap justify-center gap-8 text-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                            </div>
+                            <span class="font-medium">kontakt@malaolejarniaeli.pl</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                            </div>
+                            <span class="font-medium">+48 123 456 789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

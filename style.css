@@ -1,0 +1,86 @@
+/* Tailwind Configuration Colors */
+:root {
+  --green-primary: #6b8e23;
+  --green-secondary: #556b2f;
+  --green-light: #f0f8e8;
+  --green-dark: #2f4f2f;
+  --gold: #daa520;
+  --gold-light: #f4e4bc;
+  --cream: #fdf6e3;
+  --nature-green: #8fbc8f;
+  --sage: #9caf88;
+}
+
+/* Navigation Styles */
+.nav-item {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: #daa520;
+  transform: translateY(-2px);
+}
+
+.nav-item::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background: linear-gradient(90deg, #daa520, #f4e4bc);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+/* Background Styles */
+.nature-background {
+  background: radial-gradient(circle at 15% 25%, rgba(143, 188, 143, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(156, 175, 136, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 60% 10%, rgba(107, 142, 35, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 30% 90%, rgba(218, 165, 32, 0.06) 0%, transparent 30%),
+    linear-gradient(135deg, #fdf6e3 0%, #f0f8e8 30%, #fdf6e3 60%, #f0f8e8 100%);
+  position: relative;
+}
+
+.nature-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B8E23' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.wooden-header {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.65)),
+    url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3bd1fda4-c99f-4957-962d-70398be8cd4e-u856DZFXHwJIXVB7O1c3HMu5341IRU.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(107, 142, 35, 0.15);
+}
+
+/* Card Styles */
+.product-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(107, 142, 35, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(107, 142, 35, 0.1);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(107, 142, 35, 0.15);
+}
+
+.classical-shadow {
+  box-shadow: 0 4px 8px rgba(107, 142, 35, 0.1), 0 8px 16px rgba(107, 142, 35, 0.1), inset 0 1px 0
+    rgba(255, 255, 255, 0.1);
+}

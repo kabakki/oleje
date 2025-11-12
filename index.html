@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mała Olejarnia Eli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-primary': '#6B8E23',
+                        'green-secondary': '#556B2F',
+                        'green-light': '#F0F8E8',
+                        'green-dark': '#2F4F2F',
+                        'gold': '#DAA520',
+                        'gold-light': '#F4E4BC',
+                        'cream': '#FDF6E3',
+                        'nature-green': '#8FBC8F',
+                        'sage': '#9CAF88',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'body': ['Crimson Text', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-item {
+            transition: all 0.3s ease;
+            position: relative;
+            color: #FDF6E3; /* Changed text color to cream for visibility on green background */
+        }
+        
+        .nav-item:hover {
+            color: #DAA520;
+            transform: translateY(-2px);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #DAA520, #F4E4BC);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .decorative-border {
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #6B8E23, #DAA520, #6B8E23) 1;
+            position: relative;
+        }
+
+        .decorative-border::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(45deg, #F4E4BC, transparent, #F4E4BC);
+            z-index: -1;
+            border-radius: 12px;
+        }
+
+        .ornate-button {
+            background: linear-gradient(135deg, #6B8E23, #556B2F);
+            border: 2px solid #DAA520;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ornate-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .ornate-button:hover::before {
+            left: 100%;
+        }
+
+        .classical-shadow {
+            box-shadow: 
+                0 4px 8px rgba(107, 142, 35, 0.1),
+                0 8px 16px rgba(107, 142, 35, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Updated nature background to use image like mydelka.html */
+        .nature-background {
+            background-image: url('img/tlo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        .nature-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B8E23' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .green-header {
+            background: linear-gradient(to right, #2F4F2F, #556B2F, #2F4F2F);
+            box-shadow: 0 4px 12px rgba(107, 142, 35, 0.15);
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(107, 142, 35, 0.2);
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(107, 142, 35, 0.1),
+                0 20px 60px rgba(107, 142, 35, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 142, 35, 0.15);
+        }
+        
+        .image-container {
+            background: linear-gradient(135deg, #F0F8E8, #FDF6E3);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 60%, rgba(240, 248, 232, 0.2) 100%);
+        }
+    </style>
+</head>
+<body class="nature-background text-green-dark font-body min-h-screen">
+    <!-- Decorative top border -->
+    <div class="h-2 bg-gold"></div>
+    
+    <!-- Header -->
+    <!-- Changed from wooden-header to green-header and added text-cream for visibility -->
+    <header class="green-header classical-shadow sticky top-0 z-50 border-b-2 border-gold-light text-cream">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <!-- Updated logo to use the new Mała Olejarnia Eli logo image -->
+                    <img src="img/logo.png" alt="Mała Olejarnia Eli" class="h-24 w-auto">
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-item font-semibold text-lg font-serif text-gold">O NAS</a>
+                    <a href="oleje.html" class="nav-item font-semibold text-lg font-serif">OLEJE</a>
+                    <a href="swiece.html" class="nav-item font-semibold text-lg font-serif">ŚWIECE SOJOWE</a>
+                    <a href="mydelka.html" class="nav-item font-semibold text-lg font-serif">NATURALNE MYDEŁKA</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <!-- Changed text color to cream for visibility -->
+                <button class="md:hidden p-2 text-cream">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16 relative">
+        <!-- Replaced cascading blob layout with simple grid of rectangular cards -->
+        <div class="space-y-16 max-w-5xl mx-auto">
+            <!-- Oleje Card -->
+            <div class="product-card p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="image-container">
+                        <img src="img/oleje.png" alt="Oleje" class="w-full h-80 object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">OLEJE</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Wysokiej jakości oleje tłoczone na zimno. Zachowują wszystkie cenne właściwości dzięki delikatnej metodzie tłoczenia bez użycia wysokich temperatur.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Odkryj bogactwo naturalnych olejów - od słonecznikowego, przez rzepakowy, konopny, aż po olej z ostropestu i czarnuszki. Każdy produkt to efekt starannej selekcji i tradycyjnych metod produkcji.
+                        </p>
+                        <a href="oleje.html" class="ornate-button text-white px-10 py-3 rounded-full font-bold text-base transition-all duration-300 transform hover:scale-105 font-serif inline-block">
+                            ZOBACZ WIĘCEJ
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mydełka Card -->
+            <div class="product-card p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6 md:order-1">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">MYDEŁKA</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Naturalne mydełka ręcznie robione z najczystszych składników. Każde mydełko to unikalne połączenie naturalnych olejów, masła shea i aromatycznych olejków eterycznych.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Delikatne dla skóry, przyjazne dla środowiska. Nasze mydełka nie zawierają sztucznych barwników ani konserwantów. Idealne dla całej rodziny, również dla skóry wrażliwej.
+                        </p>
+                        <a href="mydelka.html" class="ornate-button text-white px-10 py-3 rounded-full font-bold text-base transition-all duration-300 transform hover:scale-105 font-serif inline-block">
+                            ZOBACZ WIĘCEJ
+                        </a>
+                    </div>
+                    <div class="image-container md:order-2">
+                        <img src="img/mydlo 2.png" alt="Mydełka" class="w-full h-80 object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Świece Card -->
+            <div class="product-card p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="image-container">
+                        <img src="img/swieca.png" alt="Świece" class="w-full h-80 object-contain">
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">ŚWIECE SOJOWE</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Świece sojowe o pięknych zapachach dla relaksu i atmosfery. Wykonane z naturalnego wosku sojowego, który pali się dłużej i czystszej niż tradycyjne świece parafinowe.
+                        </p>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Aromatyczne kompozycje stworzone z wysokiej jakości olejków eterycznych. Idealne do tworzenia przytulnej atmosfery w domu, medytacji czy relaksu po ciężkim dniu.
+                        </p>
+                        <a href="swiece.html" class="ornate-button text-white px-10 py-3 rounded-full font-bold text-base transition-all duration-300 transform hover:scale-105 font-serif inline-block">
+                            ZOBACZ WIĘCEJ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-green-dark via-green-secondary to-green-dark text-cream py-16 mt-20 relative">
+        <!-- Decorative top border -->
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent to-gold"></div>
+        
+        <div class="container mx-auto px-4">
+            <!-- Removed animation classes from footer content -->
+            <div class="text-center">
+                <!-- Decorative header with ornaments -->
+                <div class="flex justify-center items-center mb-8">
+                    <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-gold"></div>
+                    <h3 class="text-3xl font-bold mx-6 font-serif">MAŁA OLEJARNIA ELI</h3>
+                    <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-gold"></div>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-xl leading-relaxed mb-6 font-body">
+                        Nasze oleje tłoczone na zimno, 
+                        naturalne mydełka i świece sojowe to efekt wieloletniej pracy nad doskonałością każdego produktu.
+                    </p>
+                    <p class="text-xl leading-relaxed mb-8 font-body">
+                        Dbamy o najwyższą jakość i tradycyjne metody produkcji, aby dostarczyć Państwu 
+                        produkty, które wspierają zdrowie i dobre samopoczucie w naturalny sposób.
+                    </p>
+                </div>
+                
+                <!-- Enhanced contact section with decorative elements -->
+                <div class="mt-12 bg-green-primary bg-opacity-20 rounded-xl p-8 max-w-2xl mx-auto">
+                    <h4 class="text-xl font-bold mb-6 font-serif text-gold">SKONTAKTUJ SIĘ Z NAMI</h4>
+                    <div class="flex flex-wrap justify-center gap-8 text-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                            </div>
+                            <span class="font-medium">kontakt@malaolejarniaeli.pl</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-dark" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                            </div>
+                            <span class="font-medium">+48 123 456 789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative bottom elements -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+            <div class="flex space-x-2">
+                <div class="w-2 h-2 bg-gold rounded-full opacity-60"></div>
+                <div class="w-2 h-2 bg-gold rounded-full opacity-80"></div>
+                <div class="w-2 h-2 bg-gold rounded-full"></div>
+                <div class="w-2 h-2 bg-gold rounded-full opacity-80"></div>
+                <div class="w-2 h-2 bg-gold rounded-full opacity-60"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Removed animation JavaScript -->
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Świece Sojowe - Mała Olejarnia Eli</title>
+    <title>Oferty Specjalne - Mała Olejarnia Eli</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script>
@@ -53,6 +53,7 @@
             transform: translateX(-50%);
         }
 
+        /* Replaced nature background with clean gradient like swiece.html */
         .nature-background {
             background: 
                 radial-gradient(circle at 15% 25%, rgba(143, 188, 143, 0.15) 0%, transparent 40%),
@@ -88,74 +89,63 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .product-card {
+        .oil-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(107, 142, 35, 0.2);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(107, 142, 35, 0.1);
+            box-shadow: 
+                0 10px 30px rgba(107, 142, 35, 0.1),
+                0 20px 60px rgba(107, 142, 35, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
         }
 
-        .product-card:hover {
+        .oil-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(107, 142, 35, 0.15);
         }
 
-        .star-decoration {
+        .oil-image {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .oil-image::after {
+            content: '';
             position: absolute;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .star-1 {
-            top: 10%;
-            left: 5%;
-            width: 20px;
-            height: 20px;
-            background: rgba(218, 165, 32, 0.3);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        }
-        
-        .star-2 {
-            top: 30%;
-            right: 8%;
-            width: 16px;
-            height: 16px;
-            background: rgba(107, 142, 35, 0.2);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        }
-        
-        .star-3 {
-            bottom: 20%;
-            left: 10%;
-            width: 18px;
-            height: 18px;
-            background: rgba(156, 175, 136, 0.25);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 60%, rgba(240, 248, 232, 0.2) 100%);
         }
     </style>
 </head>
 <body class="nature-background text-green-dark font-body min-h-screen">
+    <!-- Decorative top border -->
     <div class="h-2 bg-gold"></div>
     
+    <!-- Header -->
     <header class="green-header classical-shadow sticky top-0 z-50 border-b-2 border-gold-light text-cream">
         <div class="container mx-auto px-4 py-6">
             <div class="flex items-center justify-between">
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="index.html">
-                        <img src="img/logo.png" alt="Mała Olejarnia Eli" class="h-24 w-auto">
-                    </a>
+                    <img src="img/logo.png" alt="Mała Olejarnia Eli" class="h-24 w-auto">
                 </div>
                 
+                <!-- Navigation -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="index.html" class="nav-item font-semibold text-lg font-serif">O NAS</a>
                     <a href="oleje.html" class="nav-item font-semibold text-lg font-serif">OLEJE</a>
-                    <a href="swiece.html" class="nav-item font-semibold text-lg font-serif text-gold">ŚWIECE SOJOWE</a>
+                    <a href="swiece.html" class="nav-item font-semibold text-lg font-serif">ŚWIECE SOJOWE</a>
                     <a href="mydelka.html" class="nav-item font-semibold text-lg font-serif">NATURALNE MYDEŁKA</a>
-                    <a href="specjalne.html" class="nav-item font-semibold text-lg font-serif">OFERTY SPECJALNE</a>
+                    <a href="specjalne.html" class="nav-item font-semibold text-lg font-serif text-gold">OFERTY SPECJALNE</a>
                 </nav>
                 
+                <!-- Mobile menu button -->
                 <button class="md:hidden p-2 text-cream">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -165,92 +155,108 @@
         </div>
     </header>
 
+    <!-- Page Title Section -->
     <div class="bg-gradient-to-r from-green-light via-cream to-green-light py-12">
         <div class="container mx-auto px-4 text-center">
             <div class="flex justify-center items-center mb-6">
                 <div class="w-20 h-0.5 bg-gradient-to-r from-transparent to-gold"></div>
-                <h1 class="text-5xl font-bold mx-8 font-serif text-green-dark">ŚWIECE SOJOWE</h1>
+                <h1 class="text-5xl font-bold mx-8 font-serif text-green-dark">OFERTY SPECJALNE</h1>
                 <div class="w-20 h-0.5 bg-gradient-to-l from-transparent to-gold"></div>
             </div>
             <p class="text-xl text-green-secondary font-body max-w-3xl mx-auto leading-relaxed">
-                Nasze świece sojowe to połączenie naturalnych składników z pięknymi zapachami. 
-                Każda świeca jest ręcznie wykonana z najwyższej jakości wosku sojowego.
+                Wyjątkowe zestawy prezentowe i produkty na specjalne okazje. Idealne na upominki dla bliskich!
             </p>
         </div>
     </div>
 
-    <main class="container mx-auto px-4 py-12 relative">
-        <div class="star-decoration star-1"></div>
-        <div class="star-decoration star-2"></div>
-        <div class="star-decoration star-3"></div>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16 relative">
         
+        <!-- Offers Grid -->
         <div class="space-y-16">
-            <div class="product-card p-8 flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_invictus-CqdlByIvLJTzNRtacdDoTts6A5LtCN.jpg" alt="Świeca Invictus" class="w-full h-80 object-cover rounded-lg">
-                </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Invictus</h3>
-                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
-                        Energetyzujący zapach inspirowany świeżością morza i drzewem grejpfrutowym. 
-                        Idealny do porannej motywacji i tworzenia dynamicznej atmosfery. Czas palenia: około 40 godzin.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-gold font-serif">30 zł</span>
+            <!-- Offer 1 - Zestawy prezentowe -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="oil-image">
+                            <img src="/img/Zestawy prezentowe 1.jpg" alt="Zestawy prezentowe 1" class="w-full h-96 object-cover">
+                        </div>
+                        <div class="oil-image">
+                            <img src="/img/Zestawy prezentowe 2.jpg" alt="Zestawy prezentowe 2" class="w-full h-96 object-cover">
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Zestawy Prezentowe</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Produkty do wyboru, cena do ustalenia
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card p-8 flex flex-col md:flex-row-reverse items-center gap-8">
-                <div class="md:w-1/2">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_pola%20lawendy-qGbYE4wm0hxCeGiABk6gqoExZ8cA5l.jpg" alt="Świeca Pola Lawendy" class="w-full h-80 object-cover rounded-lg">
-                </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Pola Lawendy</h3>
-                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
-                        Relaksujący zapach prowansalskiej lawendy przeniesie Cię na spokojne pola kwiatowe. 
-                        Idealna do wieczornego odpoczynku i medytacji. Czas palenia: około 45 godzin.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-gold font-serif">30 zł</span>
+            <!-- Offer 2 - Świece sojowe na specjalne okazje -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6 md:order-1">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Świece Sojowe na Specjalne Okazje</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Cena do ustalenia
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 md:order-2">
+                        <div class="oil-image">
+                            <img src="/img/Świece sojowe na specjalne okazje 1.jpg" alt="Świece sojowe 1" class="w-full h-96 object-cover">
+                        </div>
+                        <div class="oil-image">
+                            <img src="/img/Świece sojowe na specjalne okazje 2.jpg" alt="Świece sojowe 2" class="w-full h-96 object-cover">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card p-8 flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_miss%20cherry-WMrkNJs47aIAOCRa7B870e7yiGflZh.jpg" alt="Świeca Miss Cherry" class="w-full h-80 object-cover rounded-lg">
-                </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Miss Cherry</h3>
-                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
-                        Słodki i soczysty zapach dojrzałych wiśni z nutą migdałów. 
-                        Wprowadzi do Twojego domu radosną i ciepłą atmosferę. Czas palenia: około 42 godziny.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-gold font-serif">30 zł</span>
+            <!-- Offer 3 - Stroiki ze świecą -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="oil-image">
+                            <img src="/img/Stroik świąteczny ze świecą 1.jpg" alt="Stroik świąteczny 1" class="w-full h-96 object-cover">
+                        </div>
+                        <div class="oil-image">
+                            <img src="/img/Stroik świąteczny ze świecą 2.jpg" alt="Stroik świąteczny 2" class="w-full h-96 object-cover">
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Stroiki ze Świecą</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Cena do ustalenia
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="product-card p-8 flex flex-col md:flex-row-reverse items-center gap-8">
-                <div class="md:w-1/2">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/swieca_zielony%20wodospad-V9jcjKQlhQNg2UifYINjPhrVOr7Uay.jpg" alt="Świeca Zielony Wodospad" class="w-full h-80 object-cover rounded-lg">
-                </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-3xl font-bold text-green-dark mb-4 font-serif">Świeca Zielony Wodospad</h3>
-                    <p class="text-green-secondary mb-6 text-lg leading-relaxed">
-                        Orzeźwiający zapach zielonej herbaty z nutami bambusa i mchu. 
-                        Przeniesie Cię w spokój tropikalnego lasu deszczowego. Czas palenia: około 38 godzin.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-gold font-serif">30 zł</span>
+            <!-- Offer 4 - Mydełka na różne okazje -->
+            <div class="oil-card p-8 max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6 md:order-1">
+                        <h2 class="text-3xl font-bold text-green-dark font-serif">Mydełka na Różne Okazje</h2>
+                        <p class="text-lg text-green-secondary leading-relaxed">
+                            Cena do ustalenia
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 md:order-2">
+                        <div class="oil-image">
+                            <img src="/img/mydnaok.jpg" alt="Mydełka na różne okazje" class="w-full h-96 object-cover">
+                        </div>
+                        <div class="oil-image">
+                            <img src="/img/Mydełka na różne okazje.jpg" alt="Mydełka w pudełku" class="w-full h-96 object-cover">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gradient-to-r from-green-dark via-green-secondary to-green-dark text-cream py-16 mt-20 relative">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold"></div>
         

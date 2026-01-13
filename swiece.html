@@ -157,11 +157,23 @@
                     <a href="#kontakt" class="nav-item font-semibold text-lg font-serif">KONTAKT</a>
                 </nav>
                 
-                <button class="md:hidden p-2 text-cream">
+                <button id="mobile-menu-button" class="md:hidden p-2 text-cream">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
+            </div>
+            
+            <!-- Mobile menu dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <nav class="flex flex-col space-y-3">
+                    <a href="index.html" class="nav-item font-semibold text-lg font-serif py-2">O NAS</a>
+                    <a href="oleje.html" class="nav-item font-semibold text-lg font-serif py-2">OLEJE</a>
+                    <a href="swiece.html" class="nav-item font-semibold text-lg font-serif !text-gold py-2">ŚWIECE SOJOWE</a>
+                    <a href="mydelka.html" class="nav-item font-semibold text-lg font-serif py-2">NATURALNE MYDEŁKA</a>
+                    <a href="specjalne.html" class="nav-item font-semibold text-lg font-serif py-2">OFERTY SPECJALNE</a>
+                    <a href="#kontakt" class="nav-item font-semibold text-lg font-serif py-2">KONTAKT</a>
+                </nav>
             </div>
         </div>
     </header>
@@ -320,7 +332,15 @@
             </div>
         </div>
     </footer>
-        <script>
+ <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Add smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
